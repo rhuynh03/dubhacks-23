@@ -24,25 +24,24 @@ while cap.isOpened():
     lmList = detector.findPosition(img, False)
     # print(lmList)
     if len(lmList) != 0:
-        elbow = detector.findAngle(img, 11, 13, 15)
-        shoulder = detector.findAngle(img, 13, 11, 23)
-        hip = detector.findAngle(img, 11, 23,25)
+        hip = detector.findAngle(img, 11, 23, 25)
+        knee = detector.findAngle(img, 23, 25, 27)
+                
+        #Percentage of success of curlup
+        per = np.interp(hip, (70, 100), (0, 100))
         
-        #Percentage of success of pushup
-        per = np.interp(elbow, (90, 160), (0, 100))
-        
-        #Bar to show Pushup progress
-        bar = np.interp(elbow, (90, 160), (380, 50))
+        #Bar to show curlup progress
+        bar = np.interp(hip, (70, 100), (380, 50))
 
         #Check to ensure right form before starting the program
-        if elbow > 160 and shoulder > 40 and hip > 160:
+        if hip > 105 and knee < 105:
             form = 1
     
-        #Check for full range of motion for the pushup
+        #Check for full range of motion for the curlup
         if form == 1:
             if per == 0:
-                if elbow <= 90 and hip > 160:
-                    feedback = "Up"
+                if hip <= 65 and knee < 105:
+                    feedback = "Down"
                     if direction == 0:
                         count += 0.5
                         direction = 1
@@ -50,8 +49,8 @@ while cap.isOpened():
                     feedback = "Fix Form"
                     
             if per == 100:
-                if elbow > 160 and shoulder > 40 and hip > 160:
-                    feedback = "Down"
+                if hip > 105 and knee < 105:
+                    feedback = "Up"
                     if direction == 1:
                         count += 0.5
                         direction = 0
@@ -71,7 +70,7 @@ while cap.isOpened():
                         (255, 0, 0), 2)
 
 
-        #Pushup counter
+        #Curlup counter
         cv2.rectangle(img, (0, 380), (100, 480), (0, 255, 0), cv2.FILLED)
         cv2.putText(img, str(int(count)), (25, 455), cv2.FONT_HERSHEY_PLAIN, 5,
                     (255, 0, 0), 5)
@@ -82,7 +81,7 @@ while cap.isOpened():
                     (0, 255, 0), 2)
 
         
-    cv2.imshow('Pushup counter', img)
+    cv2.imshow('Curlup counter', img)
     if cv2.waitKey(10) & 0xFF == ord('q'):
         break
         

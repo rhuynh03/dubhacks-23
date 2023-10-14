@@ -25,24 +25,25 @@ while cap.isOpened():
     # print(lmList)
     if len(lmList) != 0:
         hip = detector.findAngle(img, 11, 23, 25)
-        knee = detector.findAngle(img, 23, 25, 27)
+        #knee = detector.findAngle(img, 23, 25, 27)
+        elbow = detector.findAngle(img, 11, 13, 15)
 
-        #Percentage of success of pushup
-        per = np.interp(knee, (90, 160), (0, 100))
+        #Percentage of success of bicep curl
+        per = np.interp(elbow, (50, 170), (0, 100))
 
-        #Bar to show Pushup progress
-        bar = np.interp(knee, (90, 160), (380, 50))
+        #Bar to show bicep curl progress
+        bar = np.interp(elbow, (50, 170), (380, 50))
 
         #Check to ensure right form before starting the program
-        if hip > 160 and knee > 160:
+        if elbow > 160 and hip > 160:
             form = 1
 
         fullForm = False
         #Check for full range of motion for the pushup
         if form == 1:
             if per == 0:
-                if knee <= 90 and hip <= 90:
-                    feedback = "Up"
+                if elbow < 50 and hip > 160:
+                    feedback = "Down"
                     if direction == 0:
                         count += 0.5
                         direction = 1
@@ -50,8 +51,8 @@ while cap.isOpened():
                     feedback = "Fix Form"
 
             if per == 100:
-                if knee > 160 and hip >= 150:
-                    feedback = "Down"
+                if elbow > 170 and hip > 160:
+                    feedback = "Up"
                     if direction == 1:
                         count += 0.5
                         direction = 0

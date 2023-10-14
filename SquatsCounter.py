@@ -82,7 +82,7 @@ while cap.isOpened():
                     (0, 255, 0), 2)
 
         
-    cv2.imshow('Pushup counter', img)
+    cv2.imshow('Squats counter', img)
     if cv2.waitKey(10) & 0xFF == ord('q'):
         break
         

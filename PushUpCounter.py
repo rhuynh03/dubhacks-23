@@ -1,7 +1,7 @@
 import cv2
 import mediapipe as mp
 import numpy as np
-import PoseModule as pm
+import BasicPoseModule as pm
 
 class PushUpCounter(object) :
     def __init__(self):

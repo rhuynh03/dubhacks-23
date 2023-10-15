@@ -3,7 +3,7 @@
   <head>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Onest&display=swap" rel="stylesheet">
-    <script src="{{ url_for('static', filename='js/button.js') }}"></script>
+    <!-- <script src="{{ url_for('static', filename='js/button.js') }}"></script> -->
     <title>Excercise Counter</title>
   </head>
 
@@ -14,19 +14,27 @@
     <main>
       <section class="counters">
         <article>
-          <button HTMLButtonElement.onclick="CurlUpCounterScript()"><h2>Curl Ups</h2><img id="curl-ups" src="{{ url_for('curl_ups') }}"></button>
+          <!-- <button onclick="CurlUpCounterScript()"></button> -->
+          <h2>Curl Ups</h2>
+          <img id="curl-ups" src="{{ url_for('curl_ups') }}">
         </article>
   
         <article>
-          <button onclick="BicepCurlCounterScript()"><h2>Bicep Curls</h2><img id="bicep-curls" src="{{ url_for('bicep_curls') }}"></button>
+          <!-- <button onclick="BicepCurlCounterScript()"></button> -->
+          <h2>Bicep Curls</h2>
+          <img id="bicep-curls" src="{{ url_for('bicep_curls') }}">
         </article>
   
         <article>
-          <button onclick="SquatsCounterScript()"><h2>Squats</h2><img id="squats" src="{{ url_for('squats') }}"></button>
+          <!-- <button onclick="SquatsCounterScript()"></button> -->
+          <h2>Squats</h2>
+          <img id="squats" src="{{ url_for('squats') }}">
         </article>
 
         <article>
-          <button onclick="PlankCounterScript()"><h2>Planks</h2><img id="squats" src="{{ url_for('planks') }}"></button>
+          <!-- <button onclick="PlankCounterScript()"></button> -->
+          <h2>Planks</h2>
+          <img id="squats" src="{{ url_for('planks') }}">
         </article>
   
       </section>

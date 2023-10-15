@@ -1,7 +1,7 @@
 import cv2
 import mediapipe as mp
 import numpy as np
-import PoseModule as pm
+import BasicPoseModule as pm
 
 
 class BicepCurlCounter(object):
@@ -36,10 +36,10 @@ class BicepCurlCounter(object):
                 elbow = detector.findAngle(img, 11, 13, 15)
 
                 #Percentage of success of bicep curl
-                per = np.interp(elbow, (50, 170), (0, 100))
+                per = np.interp(elbow, (60, 170), (0, 100))
 
                 #Bar to show bicep curl progress
-                bar = np.interp(elbow, (50, 170), (380, 50))
+                bar = np.interp(elbow, (60, 170), (380, 50))
 
                 #Check to ensure right form before starting the program
                 if elbow > 160 and hip > 160:
@@ -49,7 +49,7 @@ class BicepCurlCounter(object):
                 #Check for full range of motion for the bicep curl
                 if form == 1:
                     if per == 0:
-                        if elbow < 50 and hip > 160:
+                        if elbow < 60 and hip > 160:
                             feedback = "Down"
                             if direction == 0:
                                 count += 0.5

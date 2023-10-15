@@ -1,6 +1,9 @@
 from flask import Flask, render_template, Response
 from PushUpCounter import PushUpCounter
-# from BicepCurlCounter import
+from BicepCurlCounter import BicepCurlCounter
+from CurlUpCounter import CurlUpCounter
+from SquatsCounter import SquatsCounter
+from PlankCounter import PlankCounter
 
 app = Flask(__name__)
 
@@ -15,24 +18,29 @@ def gen(camera):
            b'Content-Type: image/jpeg\r\n\r\n' + frame
            + b'\r\n\r\n')
 
-@app.route('/')
-def video_feed():
+@app.route('/push_ups')
+def push_up():
   return Response(gen(PushUpCounter()), 
                   mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @app.route('/curl_ups')
-def video_feed():
-  return Response(gen(PushUpCounter()), 
+def curl_ups():
+  return Response(gen(CurlUpCounter()), 
                   mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @app.route('/bicep_curls')
-def video_feed():
-  return Response(gen(PushUpCounter()), 
+def bicep_curls():
+  return Response(gen(BicepCurlCounter()), 
                   mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @app.route('/squats')
-def video_feed():
-  return Response(gen(PushUpCounter()), 
+def squats():
+  return Response(gen(SquatsCounter()),
+                  mimetype='multipart/x-mixed-replace; boundary=frame')
+
+@app.route('/planks')
+def planks():
+  return Response(gen(PlankCounter()),
                   mimetype='multipart/x-mixed-replace; boundary=frame')
 
 if __name__ == '__main__':

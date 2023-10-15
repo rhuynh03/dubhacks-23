@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}"> 
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Onest&display=swap" rel="stylesheet">
+    <script src="{{ url_for('static', filename='js/button.js') }}"></script>
     <title>Excercise Counter</title>
   </head>
 
@@ -13,17 +14,19 @@
     <main>
       <section class="counters">
         <article>
-          <button onclick="runPythonScript()"><h2>Curl Ups</h2></button>
-          <img id="curl-ups" src="{{ url_for('video_feed') }}">
-        </article>
-  
-        <article><button onclick="runPythonScript()"><h2>Bicep Curls</h2></button>
-          <img id="bicep-curls" src="{{ url_for('video_feed') }}">
+          <button HTMLButtonElement.onclick="CurlUpCounterScript()"><h2>Curl Ups</h2><img id="curl-ups" src="{{ url_for('curl_ups') }}"></button>
         </article>
   
         <article>
-          <article><button onclick="runPythonScript()"><h2>Squats</h2></button>
-          <img id="squats" src="{{ url_for('video_feed') }}">
+          <button onclick="BicepCurlCounterScript()"><h2>Bicep Curls</h2><img id="bicep-curls" src="{{ url_for('bicep_curls') }}"></button>
+        </article>
+  
+        <article>
+          <button onclick="SquatsCounterScript()"><h2>Squats</h2><img id="squats" src="{{ url_for('squats') }}"></button>
+        </article>
+
+        <article>
+          <button onclick="PlankCounterScript()"><h2>Planks</h2><img id="squats" src="{{ url_for('planks') }}"></button>
         </article>
   
       </section>

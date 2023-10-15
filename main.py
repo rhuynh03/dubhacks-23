@@ -1,6 +1,8 @@
 from flask import Flask, render_template, Response
 from PushUpCounter import PushUpCounter
-
+from BicepCurlCounter import BicepCurlCounter
+from CurlUpCounter import CurlUpCounter
+from SquatsCounter import SquatsCounter
 app = Flask(__name__)
 
 @app.route('/')
@@ -16,7 +18,7 @@ def gen(camera):
 
 @app.route('/video_feed')
 def video_feed():
-  return Response(gen(PushUpCounter()), 
+  return Response(gen(SquatsCounter()),
                   mimetype='multipart/x-mixed-replace; boundary=frame')
 
 if __name__ == '__main__':

@@ -27,10 +27,10 @@ while cap.isOpened():
         hip = detector.findAngle(img, 11, 23, 25)
         knee = detector.findAngle(img, 23, 25, 27)
 
-        #Percentage of success of curlup
+        #Percentage of success of curl up
         per = np.interp(hip, (70, 100), (0, 100))
 
-        #Bar to show curlup progress
+        #Bar to show curl up progress
         bar = np.interp(hip, (70, 100), (380, 50))
 
         #Check to ensure right form before starting the program

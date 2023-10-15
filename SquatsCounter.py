@@ -27,10 +27,10 @@ while cap.isOpened():
         hip = detector.findAngle(img, 11, 23, 25)
         knee = detector.findAngle(img, 23, 25, 27)
 
-        #Percentage of success of pushup
+        #Percentage of success of squat
         per = np.interp(knee, (90, 160), (0, 100))
 
-        #Bar to show Pushup progress
+        #Bar to show squat progress
         bar = np.interp(knee, (90, 160), (380, 50))
 
         #Check to ensure right form before starting the program
@@ -38,7 +38,7 @@ while cap.isOpened():
             form = 1
 
         fullForm = False
-        #Check for full range of motion for the pushup
+        #Check for full range of motion for the squat
         if form == 1:
             if per == 0:
                 if knee <= 90 and hip <= 90:
@@ -71,7 +71,7 @@ while cap.isOpened():
                         (255, 0, 0), 2)
 
 
-        #Pushup counter
+        #squat counter
         cv2.rectangle(img, (0, 380), (100, 480), (0, 255, 0), cv2.FILLED)
         cv2.putText(img, str(int(count)), (25, 455), cv2.FONT_HERSHEY_PLAIN, 5,
                     (255, 0, 0), 5)

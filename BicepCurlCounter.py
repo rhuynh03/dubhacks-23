@@ -25,7 +25,6 @@ while cap.isOpened():
     # print(lmList)
     if len(lmList) != 0:
         hip = detector.findAngle(img, 11, 23, 25)
-        #knee = detector.findAngle(img, 23, 25, 27)
         elbow = detector.findAngle(img, 11, 13, 15)
 
         #Percentage of success of bicep curl
@@ -39,7 +38,7 @@ while cap.isOpened():
             form = 1
 
         fullForm = False
-        #Check for full range of motion for the pushup
+        #Check for full range of motion for the bicep curl
         if form == 1:
             if per == 0:
                 if elbow < 50 and hip > 160:
@@ -72,7 +71,7 @@ while cap.isOpened():
                         (255, 0, 0), 2)
 
 
-        #Pushup counter
+        #Bicep Curl counter
         cv2.rectangle(img, (0, 380), (100, 480), (0, 255, 0), cv2.FILLED)
         cv2.putText(img, str(int(count)), (25, 455), cv2.FONT_HERSHEY_PLAIN, 5,
                     (255, 0, 0), 5)
@@ -83,7 +82,7 @@ while cap.isOpened():
                     (0, 255, 0), 2)
 
 
-    cv2.imshow('Squats counter', img)
+    cv2.imshow('Bicep Curl counter', img)
     if cv2.waitKey(10) & 0xFF == ord('q'):
         break
 

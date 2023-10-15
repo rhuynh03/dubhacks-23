@@ -1,7 +1,14 @@
 body {
   font-family: 'Onest', sans-serif;
+  background-color: blanchedalmond;
 }
 
 h1 {
   text-align: center;
+}
+
+section {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }

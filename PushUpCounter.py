@@ -19,6 +19,7 @@ class PushUpCounter(object) :
 
         while self.cap.isOpened():
             ret, img = self.cap.read() #640 x 480
+            img = cv2.flip(img, 1)
             #Determine dimensions of video - Help with creation of box in Line 43
             width  = self.cap.get(3)  # float `width`
             height = self.cap.get(4)  # float `height`
@@ -85,10 +86,10 @@ class PushUpCounter(object) :
                 cv2.putText(img, feedback, (500, 40 ), cv2.FONT_HERSHEY_PLAIN, 2,
                             (0, 255, 0), 2)
 
-            # cv2.imshow('Pushup Counter', img)
-            ret, jpeg = cv2.imencode('.jpg', img)
+            cv2.imshow('Pushup Counter', img)
+            # ret, jpeg = cv2.imencode('.bmp', img)
             if cv2.waitKey(10) & 0xFF == ord('q'):
                 break
-            return jpeg.tobytes()
+            # return jpeg.tobytes()
         self.cap.release()
         cv2.destroyAllWindows()

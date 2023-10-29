@@ -1,2 +1,2 @@
 # FormFitness
-A fitness Web-App that is able to track your movements using your webcam, to assist and correct your form while performing your exercise. Only correctly performed repititions will be counted.
+A fitness-based web app that utilizes OpenCV and MediaPipe to track users' movements using their webcam. It assists and corrects your form while performing your exercise. Only correctly performed repetitions will be counted.
